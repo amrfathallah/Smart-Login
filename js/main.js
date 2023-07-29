@@ -69,7 +69,7 @@ function isLoginEmpty() {
 }
 var path = location.pathname.split("/");
 var baseUrl = "";
-for (var i = 0; i < path.length - 2; i++) {
+for (var i = 0; i < path.length - 1; i++) {
   baseUrl += "/" + path[i];
 }
 
@@ -84,6 +84,7 @@ function login() {
   var password = signinPassword.value;
   var correct = 0;
   for (var i = 0; i < signupContainer.length; i++) {
+
     if (
       signupContainer[i].email.toLowerCase() == email.toLowerCase() &&
       signupContainer[i].password.toLowerCase() == password.toLowerCase()
@@ -94,15 +95,16 @@ function login() {
       } else {
         location.href(baseUrl + "/home.html");
       }
-      correct = 1;
+     correct = 1;
       break;
-    }
+    } 
   }
-  if (correct == 0) {
+  if(correct==0){
     document.getElementById(
       "incorrect"
     ).innerHTML = `<span class="p-2 text-danger">incorrect email or password</span>`;
   }
+      
 }
 
 // ==================== logout ====================
