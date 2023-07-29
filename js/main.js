@@ -90,7 +90,7 @@ function login() {
     ) {
       localStorage.setItem("sessionUsername", signupContainer[i].name);
       if (baseUrl == "/") {
-        location.href("https://" + location.hostname + "/home.html");
+        location.href("https://" + baseUrl + "/home.html");
       } else {
         location.href(baseUrl + "/home.html");
       }
