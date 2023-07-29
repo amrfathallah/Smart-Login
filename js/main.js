@@ -67,10 +67,14 @@ function isLoginEmpty() {
     return false;
   }
 }
-var path = location.pathname.split("/");
-var baseUrl = "";
-for (var i = 0; i < path.length - 1; i++) {
-  baseUrl += "/" + path[i];
+
+var path = window.location.pathname.split("/");
+path = path.filter(function (segment) {
+  return segment !== "";
+});
+var baseUrl = "/";
+if (path.length > 1) {
+  baseUrl = "/" + path.slice(0, -1).join("/");
 }
 
 function login() {
@@ -84,27 +88,26 @@ function login() {
   var password = signinPassword.value;
   var correct = 0;
   for (var i = 0; i < signupContainer.length; i++) {
-
     if (
       signupContainer[i].email.toLowerCase() == email.toLowerCase() &&
       signupContainer[i].password.toLowerCase() == password.toLowerCase()
     ) {
       localStorage.setItem("sessionUsername", signupContainer[i].name);
-      if (baseUrl == "/") {
-        location.replace("https://" + location.hostname + "/home.html");
+      if (baseUrl === "/") {
+        window.location.href =
+          "https://" + window.location.hostname + "/home.html";
       } else {
-        location.replace(baseUrl + "/home.html");
+        window.location.href = baseUrl + "/home.html";
       }
-     correct = 1;
+      correct = 1;
       break;
-    } 
+    }
   }
-  if(correct==0){
+  if (correct == 0) {
     document.getElementById(
       "incorrect"
     ).innerHTML = `<span class="p-2 text-danger">incorrect email or password</span>`;
   }
-      
 }
 
 // ==================== logout ====================
