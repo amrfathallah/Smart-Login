@@ -1,0 +1,43 @@
+body {
+    background: #24353f;
+    font-family: 'Titillium Web', sans-serif;
+    overflow: hidden;
+}
+.home{
+    height: 75vh;
+    
+}
+.group{
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+h1 {
+    color: #17a2b8;
+}
+input{
+    color:white !important;
+    background-color: transparent !important;
+}
+input::placeholder {
+    color: rgb(182, 182, 182) !important;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0 transparent !important;
+}
+
+button:hover{
+    color: white !important;
+}
+.text{
+    text-decoration: none ;
+    color: white !important;
+
+
+}
+.text:hover{
+    text-decoration: underline;
+}
+.borderyellow{
+    border: 2px solid #997404;
+    margin-top: 20px;
+}
