@@ -67,14 +67,10 @@ function isLoginEmpty() {
     return false;
   }
 }
-
-var path = window.location.pathname.split("/");
-path = path.filter(function (segment) {
-  return segment !== "";
-});
-var baseUrl = "/";
-if (path.length > 1) {
-  baseUrl = "/" + path.slice(0, -1).join("/");
+var path = location.pathname.split("/");
+var baseUrl = "";
+for (var i = 0; i < path.length - 1; i++) {
+  baseUrl += "/" + path[i];
 }
 
 function login() {
@@ -93,11 +89,10 @@ function login() {
       signupContainer[i].password.toLowerCase() == password.toLowerCase()
     ) {
       localStorage.setItem("sessionUsername", signupContainer[i].name);
-      if (baseUrl === "/") {
-        window.location.href =
-          "https://" + window.location.hostname + "/home.html";
+      if (baseUrl == "/") {
+        location.href("https://" + location.hostname + "/home.html");
       } else {
-        window.location.href = baseUrl + "/home.html";
+        location.href(baseUrl + "/home.html");
       }
       correct = 1;
       break;
