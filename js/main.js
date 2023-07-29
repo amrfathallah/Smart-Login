@@ -69,7 +69,7 @@ function isLoginEmpty() {
 }
 var path = location.pathname.split("/");
 var baseUrl = "";
-for (var i = 0; i < path.length - 1; i++) {
+for (var i = 0; i < path.length - 2; i++) {
   baseUrl += "/" + path[i];
 }
 
@@ -90,7 +90,7 @@ function login() {
     ) {
       localStorage.setItem("sessionUsername", signupContainer[i].name);
       if (baseUrl == "/") {
-        location.href("https://" + baseUrl + "/home.html");
+        location.href("https://" + location.hostname + "/home.html");
       } else {
         location.href(baseUrl + "/home.html");
       }
