@@ -89,12 +89,7 @@ function login() {
       signupContainer[i].password.toLowerCase() == password.toLowerCase()
     ) {
       localStorage.setItem("sessionUsername", signupContainer[i].name);
-      if (baseUrl === "/") {
-        window.location.href =
-          "https://" + window.location.hostname + "/home.html";
-      } else {
-        window.location.href = baseUrl + "/home.html";
-      }
+      window.location = "./home.html";
       correct = 1;
       break;
     }
