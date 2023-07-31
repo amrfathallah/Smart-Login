@@ -36,6 +36,45 @@ function isEmailExist() {
     }
   }
 }
+function validitionName() {
+  var regex = /^\w{3,}(\s+\w+)*$/;
+  var text = signupName.value;
+ 
+
+ if (regex.test(text)) {
+  signupName.classList.remove("is-invalid");
+    return true;
+  } else {
+    signupName.classList.add("is-invalid");
+    return false;
+  }
+}
+function validitionEmail() {
+  var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/;
+  var text = signupEmail.value;
+ 
+
+ if (regex.test(text)) {
+  signupEmail.classList.remove("is-invalid");
+    return true;
+  } else {
+    signupEmail.classList.add("is-invalid");
+    return false;
+  }
+}
+function validitionPass() {
+  var regex = /^.{8,}$/;
+  var text = signupPassword.value;
+ 
+
+ if (regex.test(text)) {
+  signupPassword.classList.remove("is-invalid");
+    return true;
+  } else {
+    signupPassword.classList.add("is-invalid");
+    return false;
+  }
+}
 
 function signup() {
   var info = {
@@ -49,7 +88,20 @@ function signup() {
   } else if (isEmailExist() == true) {
     document.getElementById("alert").innerHTML =
       '<span class="text-danger m-3">email already exists</span>';
-  } else {
+  } 
+  else if(validitionName() == false){
+    document.getElementById("alert").innerHTML =
+    '<span class="text-danger m-3">Name must be greater than 3 character</span>';
+  }
+  else if(validitionEmail() == false){
+    document.getElementById("alert").innerHTML =
+    '<span class="text-danger m-3">Email is invalid (ex: EmailExample@gmail.com)</span>';
+  }
+  else if(validitionPass() == false){
+    document.getElementById("alert").innerHTML =
+    '<span class="text-danger m-3">Password must be 8 character or more</span>';
+  }
+  else {
     signupContainer.push(info);
     localStorage.setItem("users", JSON.stringify(signupContainer));
     document.getElementById(
